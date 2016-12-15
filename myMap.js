@@ -6,13 +6,13 @@ var map_manager = {
 map_manager.map_items = [
     {
         "pokemon_id" : 12,
-        "expire" : 1481813281,
+        "expire" : 1481870874,
         "longitude" : 139.77,
         "latitude" : 35.66
     },
     {
         "pokemon_id" : 2,
-        "expire" : 1481813281,
+        "expire" : 1481870874,
         "longitude" : 139.77,
         "latitude" : 35.661
     }
@@ -23,7 +23,7 @@ function loadMapScenario() {
         credentials: 'AjYOKYhwfvbEhwDlM3WpQP3zsgD9AgNUWIV40Fp0lw1WmwFjTIfc3sHP5GwhiW_Q'
     });
     map_manager.map = map;
-    refresh_pokemon();
+    window.setInterval(refresh_pokemon, 1000);
 }
 
 function refresh_pokemon() {
