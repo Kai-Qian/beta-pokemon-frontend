@@ -37,7 +37,7 @@ function refresh_pokemon() {
         var pushpin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(map_item["latitude"], map_item["longitude"]), 
                                                  {title : count_down, icon: icon_url});
 //         map.entities.push(pushpin);
-        pushpins.add(pushpin);
+        pushpins.push(pushpin);
     }
     layer.add(pushpins);
     // 2. Remove old pushpins
