@@ -23,6 +23,7 @@ function loadMapScenario() {
         credentials: 'AjYOKYhwfvbEhwDlM3WpQP3zsgD9AgNUWIV40Fp0lw1WmwFjTIfc3sHP5GwhiW_Q'
     });
     map_manager.map = map;
+    query_pokemon_data();
     window.setInterval(refresh_pokemon, 1000);
 }
 
@@ -44,6 +45,27 @@ function refresh_pokemon() {
     map_manager.map.layers.clear();
     // 3. Add new pushpins
     map_manager.map.layers.insert(layer);
+}
+
+function query_pokemon_data() {
+    var bounds = map_manager.map.getBounds();
+    var apigClient = apigClientFactory.newClient();
+    var params = {
+        //This is where any header, path, or querystring request params go. The key is the parameter named as defined in the API
+        north: bounds.getNorth(),
+        south: bounds.getSouth(),
+        east: bounds.getEast(),
+        west: bounds.getWest()
+    };
+    body = {};
+    additionalParams = {};
+    apigClient.mapPokemonGet (params, body, additionalParams)
+        .then(function(result){
+            //This is where you would put a success callback
+        console.log(result);
+        }).catch( function(result){
+            //This is where you would put an error callback
+        });
 }
 
 function get_count_down_from_timestamp(timestamp) {
