@@ -63,7 +63,7 @@ function query_pokemon_data() {
         .then(function(result){
             //This is where you would put a success callback
 //         console.log(result);
-            map_manager.map_items = result;
+            map_manager.map_items = result.data;
         }).catch( function(result){
             //This is where you would put an error callback
             console.log(result);
